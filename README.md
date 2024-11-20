@@ -1,6 +1,6 @@
 ## Hardware Setup
 
-###Connecting MPU to Esp32 Microcontroller:
+### Connecting MPU to Esp32 Microcontroller:
 
 - Connecting SDA and SCL pins from the MPU to the microcontroller's I2C pins.
 
@@ -8,32 +8,32 @@
 
 - Provide power (VCC and GND) to the MPU.
 
-###Configuring MPU using I2C:
+### Configuring MPU using I2C:
 
 - Initialize the communication.
 
 - Write to the MPU registers to set the desired sampling rate, sensitivity (±2g for accelerometer), and other parameters.
 
-##libraries 
+## libraries 
 MPU6050 Arduino Library
 
-##Create FreeRTOS Tasks:
+## Create FreeRTOS Tasks:
 
-###Task 1: Sensor Data Collection
+### Task 1: Sensor Data Collection
 
 - Repeated data reading on MPU at a specified frequency (100Hz).
 
 - Read accelerometer and gyroscope data using I2C.
 
 
-###Task 2: Preprocessing
+### Task 2: Preprocessing
 
 - Filter data (low-pass filter to remove noise).
 
 - Normalize or scale data for consistency.
 
 
-###Task 3: ML Inference
+### Task 3: ML Inference
 
 - Feed preprocessed data to a Tflite model for inference.
 
@@ -68,12 +68,12 @@ void vTaskPreprocess(void *pvParameters) {
         }
     }
 }
-
+```
 
 
 ## Collect Shake Data for ML Training
 
-###Collect Data:
+### Collect Data:
 
 - Label data for shake gestures ("shake") and non-shake gestures ("still").
 
@@ -82,7 +82,7 @@ void vTaskPreprocess(void *pvParameters) {
 - Use tools like Edge Impulse to upload and annotate data.
 
 
-###Example of Data:
+### Example of Data:
 
 timestamp, ax, ay, az, gx, gy, gz, label
 0, 0.12, 0.45, -9.81, 0.01, 0.02, 0.03, shake
@@ -90,7 +90,7 @@ timestamp, ax, ay, az, gx, gy, gz, label
 
 
 
-##Train an ML Model
+## Train an ML Model
 
 1. Use ML frameworks like TensorFlow.
 
@@ -102,7 +102,7 @@ timestamp, ax, ay, az, gx, gy, gz, label
 
 
 
-##Integrate ML Model
+## Integrate ML Model
 
 1. Deploy the trained model to the Esp32 microcontroller.
 
@@ -111,7 +111,7 @@ timestamp, ax, ay, az, gx, gy, gz, label
 
 
 
-#Tools and References studied to compute the above 
+# Tools and References studied to compute the above 
 
 FreeRTOS Tutorial: https://www.freertos.org/Documentation/FreeRTOS-documentation-and-books.html
 
